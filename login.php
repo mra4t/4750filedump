@@ -1,20 +1,29 @@
 <?php
- include_once("./library.php"); // To connect to the database
- $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
- // Check connection
- if (mysqli_connect_errno())
- {
- echo "Failed to connect to MySQL: " . mysqli_connect_error();
- }
- // Form the SQL query (an INSERT query)
- $sql="INSERT INTO logins (user, pw)
- VALUES
- ('$_POST[username]','$_POST[password]')";
-
- if (!mysqli_query($con,$sql))
- {
- die('Error: ' . mysqli_error($con));
- }
- echo "1 record added"; // Output to user
- mysqli_close($con);
-?>
+ session_start();
+ include('errors.php');
+ if (isset($_POST['login_user'])) {
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $password = mysqli_real_escape_string($db, $_POST['password']);
+  
+    if (empty($username)) {
+        array_push($errors, "Username is required");
+    }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+    }
+  
+    if (count($errors) == 0) {
+        $password = md5($password);
+        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $results = mysqli_query($db, $query);
+        if (mysqli_num_rows($results) == 1) {
+          $_SESSION['username'] = $username;
+          $_SESSION['success'] = "You are now logged in";
+          header('location: index.php');
+        }else {
+            array_push($errors, "Wrong username/password combination");
+        }
+    }
+  }
+  
+  ?>
