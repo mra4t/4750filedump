@@ -2,8 +2,8 @@
 session_start();
 
 // initializing variables
-$username = "";
-$email    = "";
+$name = "";
+$studentID    = "";
 $errors = array(); 
 
 // connect to the database
