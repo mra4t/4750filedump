@@ -7,20 +7,20 @@ $studentID    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'registration');
-
+$db = mysqli_connect('localhost', 'root', '', '4750 proj');
+mysqli_connect_error();
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
-  $name = mysqli_real_escape_string($db, $_POST['name']);
-  $studentID = mysqli_real_escape_string($db, $_POST['studentID']);
+  $username = mysqli_real_escape_string($db, $_POST['name']);
+  $email = mysqli_real_escape_string($db, $_POST['studentID']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($name)) { array_push($errors, "Name is required"); }
-  if (empty($studentID)) { array_push($errors, "Student ID is required"); }
+  if (empty($username)) { array_push($errors, "Name is required"); }
+  if (empty($email)) { array_push($errors, "Student ID is required"); }
   if (empty($password_1)) { array_push($errors, "Password is required"); }
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
@@ -48,7 +48,7 @@ if (isset($_POST['reg_user'])) {
   	mysqli_query($db, $query);
   	$_SESSION['studentID'] = $studentID;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: index.php');
+  	header('location: home.html');
   }
 }
   
