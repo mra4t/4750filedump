@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+<link rel="stylesheet" type="text/css" href="style.css">
     <div class="navbar">
         <a href="http://localhost/FINALProject/home.html">Home</a>
+        <a href="http://localhost/FINALProject/explore.php">Explore</a>
         <a href="http://localhost/FINALProject/addfriend.html">Add Friend</a>
-        <a href="http://localhost/FINALProject/profile.html" class="right">Profile</a>
+        <a href="http://localhost/FINALProject/profile.php" class="right">Profile</a>
     </div>
     <title>Friend Finder</title>
     <meta charset="UTF-8">
@@ -16,12 +17,4 @@
     </style>
 </head>
 <body>
-
-<h1>My Profile</h1>
-
-<a href="http://localhost/FINALProject/editprofile.html">Edit Profile</a>
-<a href="http://localhost/FINALProject/addcourse.html">Add a Class</a>
-<a href="http://localhost/FINALProject/dropcourse.html">Drop a Class</a>
-
-</body>
-</html>
+    <p>this is where the filtering functionality will go</p>
