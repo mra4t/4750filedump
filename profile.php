@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <div class="navbar">
         <a href="http://localhost/FINALProject/home.html">Home</a>
         <a href="http://localhost/FINALProject/addfriend.html">Add Friend</a>
