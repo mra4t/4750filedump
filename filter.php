@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+<link rel="stylesheet" type="text/css" href="style.css">
     <div class="navbar">
         <a href="http://localhost/FINALProject/home.html">Home</a>
         <a href="http://localhost/FINALProject/explore.php">Explore</a>
@@ -19,9 +17,4 @@
     </style>
 </head>
 <body>
-
-<h1>Welcome to Friend Finder!</h1>
-<p>A website created by me.</p>
-</body>
-</html>
-
+    <p>this is where the filtering functionality will go</p>
