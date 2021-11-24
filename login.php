@@ -1,20 +1,30 @@
 <?php
- include_once("./library.php"); // To connect to the database
- $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
- // Check connection
- if (mysqli_connect_errno())
- {
- echo "Failed to connect to MySQL: " . mysqli_connect_error();
- }
- // Form the SQL query (an INSERT query)
- $sql="INSERT INTO logins (user, pw)
- VALUES
- ('$_POST[username]','$_POST[password]')";
-
- if (!mysqli_query($con,$sql))
- {
- die('Error: ' . mysqli_error($con));
- }
- echo "1 record added"; // Output to user
- mysqli_close($con);
-?>
+ $db = mysqli_connect('localhost', 'root', '', '4750_project');
+ session_start();
+ include('errors.php');
+ if (isset($_POST['login_user'])) {
+    $studentID = mysqli_real_escape_string($db, $_POST['studentID']);
+    $password = mysqli_real_escape_string($db, $_POST['password']);
+  
+    if (empty($studentID)) {
+        array_push($errors, "Student ID is required");
+    }
+    if (empty($password)) {
+        array_push($errors, "Password is required");
+    }
+  
+    if (count($errors) == 0) {
+        $password = md5($password);
+        $query = "SELECT * FROM student WHERE student_id='$studentID' AND password='$password'";
+        $results = mysqli_query($db, $query);
+        if (mysqli_num_rows($results) == 1) {
+          $_SESSION['studentID'] = $studentID;
+          $_SESSION['success'] = "You are now logged in";
+          header('location: home.html');
+        }else {
+            array_push($errors, "Wrong username/password combination");
+        }
+    }
+  }
+  
+  ?>
