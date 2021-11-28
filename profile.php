@@ -52,28 +52,27 @@
     
     <h2>Your Friends</h2>
      <div>
-         <table><tr><th> Friend ID </th><th>Friend Name</th><th>Phone Number</th></tr>
+         <table><tr><th> Friend ID </th><th>Friend Name</th><th>Phone Number</th><th>Address</th><th>Room</th></tr>
 
     <?php
-    $sql = "SELECT student_id2, name, phone_number FROM student S, isfriendswith F WHERE S.student_id = F.student_id2 AND student_id1='$_SESSION[studentID]'";
+    $sql = "SELECT student_id2, name, phone_number, address_street, address_room FROM student S, isfriendswith F, livesin L WHERE S.student_id = F.student_id2 AND S.student_id = L.student_id AND student_id1='$_SESSION[studentID]'";
 
     $friendtable = $db->query($sql);
     if($friendtable->num_rows > 0){
         //echo"<table><tr><th>Course ID</th><th>Section</th><th>Name</th><th>Meeting Days</th><th>Time</th><th>Building</th><th>Room</th></tr>";
         //output each class
         while($row = $friendtable->fetch_assoc()){
-            echo "<tr><td>" . $row["student_id2"] . "</td><td>" . $row["name"] . "</td><td>" .$row["phone_number"] . "</td></tr>";
+            echo "<tr><td>" . $row["student_id2"] . "</td><td>" . $row["name"] . "</td><td>" .$row["phone_number"] . "</td><td>".$row["address_street"]."</td><td>".$row["address_room"]."</td></tr>";
         }
         //echo "</table>";
     }
-    else {echo "0 results";}
+    else {echo "Add Friends to see their information here!";}
 
 
     ?>
         </table>
     </div>
     <br>
-    
     <h2>Class Schedule</h2>
     <?php 
         $sql = "SELECT course_id, section, course.name, days_of_week, course.time, address_street, address_room FROM LocatedAt NATURAL JOIN Course NATURAL JOIN takes WHERE student_id='$_SESSION[studentID]'";
