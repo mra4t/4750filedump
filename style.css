@@ -66,3 +66,39 @@ form, .content {
   border: 1px solid #3c763d;
   margin-bottom: 20px;
 }
+
+.navbar {
+  width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	list-style: none;
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #ccc; 
+	border-top: 1px solid #ccc;
+}
+.navbar li {
+  float: left;
+}
+ 
+.navbar li a {
+  width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	list-style: none;
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #ccc; 
+	border-top: 1px solid #ccc;
+}
+ 
+.navbar li a:hover {
+  background-color: #444;
+  color: #fff;
+}
+ 
+.navbar a.active {
+  background-color: #5F9EA0;
+  color: #fff;
+  cursor: default;
+}
