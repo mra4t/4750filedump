@@ -49,6 +49,31 @@
         else {echo "0 results";}
     
      ?>
+    
+    <h2>Your Friends</h2>
+     <div>
+         <table><tr><th> Friend ID </th><th>Friend Name</th></tr>
+
+    <?php
+    $sql = "SELECT student_id2, name FROM student S, isfriendswith F WHERE S.student_id = F.student_id2 AND student_id1='$_SESSION[studentID]'";
+
+    $friendtable = $db->query($sql);
+    if($friendtable->num_rows > 0){
+        //echo"<table><tr><th>Course ID</th><th>Section</th><th>Name</th><th>Meeting Days</th><th>Time</th><th>Building</th><th>Room</th></tr>";
+        //output each class
+        while($row = $friendtable->fetch_assoc()){
+            echo "<tr><td>" . $row["student_id2"] . "</td><td>" . $row["name"] . "</td></tr>";
+        }
+        //echo "</table>";
+    }
+    else {echo "0 results";}
+
+
+    ?>
+        </table>
+    </div>
+    <br>
+    
     <h2>Class Schedule</h2>
     <?php 
         $sql = "SELECT course_id, section, course.name, days_of_week, course.time, address_street, address_room FROM LocatedAt NATURAL JOIN Course NATURAL JOIN takes WHERE student_id='$_SESSION[studentID]'";
