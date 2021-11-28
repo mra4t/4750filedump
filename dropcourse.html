@@ -2,19 +2,35 @@
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <div class="navbar">
-      <a href="http://localhost/FINALProject/home.html">Home</a>
-      <a href="http://localhost/FINALProject/explore.php">Explore</a>
-      <a href="http://localhost/FINALProject/addfriend.html">Add Friend</a>
-      <a href="http://localhost/FINALProject/profile.php">Back</a>
-    </div>
+      <li><a href="http://localhost/FINALProject/home.html">Home</a></li>
+      <li><a href="http://localhost/FINALProject/explore.php">Explore</a></li>
+      <li><a href="http://localhost/FINALProject/addfriend.html">Add Friend</a></li>
+      <li><a href="http://localhost/FINALProject/profile.php">Back</a></li>
+     </div>
   </head>
-<body>
-    <p>Drop a Class</p>
-    <p>Please fill out every field.</p>
-   <form action="dropcourse.php" method="post">
-     <p>Course ID: <input type="text" name="courseID" /></p>
-     <p>Section: <input type="number" name="section" /></p>
-     <p><input type="submit" /></p>
-   </form>
+  <body>
+    <br>
+    <br>
+    <br>
+  <div class="header">
+  <h2>Drop a Class</h2>
+  <p>Please fill out every field.</p>
+  <br>
+    </div>
+      
+    <form method="post" action="register.php">
+        <div class="input-group">
+          <label>Course ID</label>
+          <input type="text" name="courseID">
+        </div>
+        <div class="input-group">
+          <label>Section</label>
+          <input type="text" name="section">
+        </div>
+        <div class="input-group">
+          <button type="submit" class="btn" name="submit">Submit</button>
+        </div>
+    </form>
 </body>
 </html>
+
