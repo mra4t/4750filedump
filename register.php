@@ -7,7 +7,7 @@ $studentID = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', '4750_project');
+$db = mysqli_connect('localhost', 'root', '', '4750 proj');
 mysqli_connect_error();
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
