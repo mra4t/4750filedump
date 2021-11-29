@@ -25,7 +25,7 @@
     <p>Find friends in your classes!</p>
     <?php 
         session_start();
-        $db = mysqli_connect('localhost', 'root', '', '4750 Project');
+        $db = mysqli_connect('localhost', 'root', '', '4750_Project');
         $sql = "SELECT student.name, student.year, course_id, section FROM Takes NATURAL JOIN student";
         if (isset($_POST['original_courses'])){
             $sql = "SELECT student.name, student.year, course_id, section FROM Takes NATURAL JOIN student";
